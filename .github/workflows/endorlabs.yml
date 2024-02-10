@@ -23,7 +23,7 @@ jobs:
     - name: Run endorctl
       uses: endorlabs/github-action@main
       with:
-        namespace: "demo"
+        namespace: "matt-learn"
         api: "https://api.staging.endorlabs.com"
         enable_github_action_token: "true"
         sarif_file: findings.sarif
