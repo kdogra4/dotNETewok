@@ -1,0 +1,15 @@
+﻿@page
+@using dotNETewok.Website.Components
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">dotNET Ewok</h1>
+    <p>Vote for your <a href="https://endorlabs.com/">favorite Endor feature!</a>.</p>
+</div>
+
+@(await Html.RenderComponentAsync<ProductList>(RenderMode.ServerPrerendered))
+
+<script src ="_framework/blazor.server.js"></script>

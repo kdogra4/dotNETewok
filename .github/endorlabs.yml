@@ -1,0 +1,33 @@
+name: Scan
+
+on:
+  workflow_dispatch
+
+jobs:
+  scan:
+    permissions:
+      security-events: write
+      contents: read
+      id-token: write
+    runs-on: windows-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v3
+      with:
+       dotnet-version: |
+         7.0.x
+    - name: Restore .NET
+      run: dotnet restore --use-lock-file
+    - name: Run endorctl
+      uses: endorlabs/github-action@main
+      with:
+        namespace: "demo"
+        api: "https://api.staging.endorlabs.com"
+        enable_github_action_token: "true"
+        sarif_file: findings.sarif
+    - name: Upload SARIF to github
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: findings.sarif
