@@ -32,9 +32,3 @@ jobs:
         scan_summary_output_type: 'table'
         sarif_file: 'findings.sarif'
             
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: kriti-test
-        path: |
-          target/kriti-test   
