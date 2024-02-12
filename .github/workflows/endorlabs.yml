@@ -23,7 +23,7 @@ jobs:
     - name: Run endorctl
       uses: endorlabs/github-action@main
       with:
-        namespace: "YOUR_NAMESPACE"
+        namespace: "kriti-learn"
         api: "https://api.endorlabs.com"
         enable_github_action_token: "true"
         pr: false
