@@ -22,6 +22,7 @@ jobs:
       run: dotnet restore --use-lock-file
       
     - name: 'Endor Labs Scan Push to main'
+      if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
       uses: endorlabs/github-action@main
       with:
         namespace: 'kriti-learn' 
@@ -32,6 +33,7 @@ jobs:
         sarif_file: 'findings.sarif'
             
     - name: Upload SARIF to github
+      if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
       uses: github/codeql-action/upload-sarif@v3
       with:
-        sarif_file: 'findings.sarif'
+        sarif_file: 'findings.sarif'    
