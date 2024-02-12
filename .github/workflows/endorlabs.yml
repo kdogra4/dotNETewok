@@ -23,10 +23,11 @@ jobs:
     - name: Run endorctl
       uses: endorlabs/github-action@main
       with:
-        namespace: "YOUR_NAMESPACE"
+        namespace: "matt-demo-2"
         api: "https://api.endorlabs.com"
         enable_github_action_token: "true"
         pr: false
+        scan_secrets: true
         sarif_file: findings.sarif
     - name: Upload SARIF to github
       uses: github/codeql-action/upload-sarif@v3
