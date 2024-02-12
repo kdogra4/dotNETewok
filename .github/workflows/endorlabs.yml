@@ -20,14 +20,17 @@ jobs:
          7.0.x
     - name: Restore .NET
       run: dotnet restore --use-lock-file
-    - name: Run endorctl
+      
+    - name: 'Endor Labs Scan Push to main'
       uses: endorlabs/github-action@main
       with:
-        namespace: "kriti-learn"
-        api: "https://api.endorlabs.com"
-        enable_github_action_token: "true"
+        namespace: 'kriti-learn' 
+        scan_dependencies: true
+        scan_secrets: true
         pr: false
+        scan_summary_output_type: 'table'
         sarif_file: 'findings.sarif'
+            
     - name: Upload SARIF to github
       uses: github/codeql-action/upload-sarif@v3
       with:
